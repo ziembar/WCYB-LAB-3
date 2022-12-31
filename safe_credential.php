@@ -32,14 +32,15 @@ Email: kying@syr.edu
    
    $conn = getDB();
 
-   /* start make change for prepared statement */
-   $sql = $conn->prepare("SELECT id, name, eid, salary, birth, ssn, phoneNumber, address, email,nickname,Password 
+   	/* zmiana w kodzie, ktora zwieksza poziom zabezpieczen*/
+	   $sql = $conn->prepare("SELECT id, name, eid, salary, birth, ssn, phoneNumber, address, email,nickname,Password 
            FROM credential 
            WHERE eid= ? and Password=?");
 	$sql->bind_param("ss",$input_eid, $input_pwd);
 	$sql->execute();
 	$sql->bind_result($id, $name, $eid, $salary, $birth, $ssn, $phoneNumber, $address, $email,$nickname,$Password);
 	$sql->fetch();
+	/* zmiana w kodzie, ktora zwieksza poziom zabezpieczen*/
 /*
    if (!$result = $conn->query($sql)) {
        die('There was an error running the query [' . $conn->error . ']\n');
