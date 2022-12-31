@@ -18,7 +18,9 @@ Email: kying@syr.edu
    $input_phonenumber = $_GET['PhoneNumber']; 
    $input_id = $_SESSION['id'];
    $conn = getDB();
-  
+	
+	
+  /* zmiana w kodzie, ktora zwieksza poziom zabezpieczen*/
    if($input_pwd!=''){
    	$input_pwd = sha1($input_pwd);
    	    $sql=$conn->prepare("UPDATE credential SET nickname = ?, email= ?, address= ?, Password=$input_pwd, PhoneNumber=? where ID=$input_id");
@@ -30,6 +32,7 @@ Email: kying@syr.edu
    $sql->close();	
    header("Location: unsafe_credential.php");
    exit();
+/* zmiana w kodzie, ktora zwieksza poziom zabezpieczen*/
 
 function getDB() {
    $dbhost="localhost";
